@@ -16,7 +16,7 @@
 
     // vérifier et récup les info de ce que je dois afficher
     require "../connexion.php";
-    $req = $bdd->prepare("SELECT id,nom,sujet,email,message, DATE_FORMAT(date,'%d/%m/%Y %hh%i' ) AS mydate FROM contact WHERE id=?");
+    $req = $bdd->prepare("SELECT id,nom,prenom,email,message, DATE_FORMAT(date,'%d/%m/%Y %hh%i' ) AS mydate FROM contact WHERE id=?");
     $req->execute([$id]);
     $don = $req->fetch();
     if(!$don)
@@ -43,9 +43,8 @@
         include("partials/header.php");
     ?>
     <div class="container">
-        <h2>Message de <?= $don['nom'] ['prenom'] ?></h2>
+        <h2>Message de <?= $don['nom']?> <?= $don['prenom']?></h2>
         <h5>Envoyé le <?= $don['mydate'] ?></h5>
-        <div>Sujet: <?= $don['sujet'] ?></div>
         <div><?= nl2br($don['message']) ?></div>
         <a href="mailto:<?= $don['email'] ?>" class="btn btn-success">Répondre</a>
         <a href='contact.php' class="btn btn-secondary ms-2">Retour</a>

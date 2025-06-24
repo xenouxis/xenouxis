@@ -1,7 +1,5 @@
 <?php 
-
-require "connexion.php"
-
+    require "connexion.php";
 ?>
 
 <!DOCTYPE html>
@@ -45,26 +43,40 @@ require "connexion.php"
             <a href="web.php"class="boutontravaux">Web</a>
         </div>
     </div>
-    <div id="contact" class="slide">
-        <h1>Contact</h1>
-        <div class="groupecontact">
-            <div class="groupenom">
-                <input type="text" placeholder="Nom">
-                <input type="text" placeholder="Prénom">
-            </div>
-            <div id="mail"><input type="mail" placeholder="E-Mail"></div>
-            <div class="groupesujet">
-                           <!-- <label for="sujet">Sujet</label> -->
-                           <select name="sujet" id="sujet" class="form-control">
-                               <option value="sujet 1">Infographie</option>
-                               <option value="sujet 2">Tatouage</option>
-                           </select>
+    <div class="slide" id="contact">
+           
+                   <form action="traitement.php" method="POST">
+               <div class="groupecontact">
+                   <h1>Contact</h1>
+                   <?php
+                       if(isset($_GET['error']))
+                       {
+                           echo "<div class='danger'>Une erreur est survenue (code erreur: ".$_GET['error'].")</div>";
+                       }
+
+                       if(isset($_GET['message']))
+                       {
+                           if($_GET['message']=="success")
+                           {
+                               echo "<div class='succes'>Votre message a bien été envoyé</div>";
+                           }
+                       }
+                   ?>
+                    <div class="groupebouton">
+                        <input type="text" id="nom" name="nom" class="nom" placeholder="Nom">
+                        <input type="text" id="prenom" name="prenom" class="nom" placeholder="Prenom">
+                    </div>
+                       <div class="mail">
+                           <input type="email" name="email" placeholder="Email" id="mail">
                        </div>
-            <div id="message"><textarea name="message" id="message" placeholder="Message"></textarea></div>
-            <div id="boutonenvoyer">
-                <input type="submit" id=submit>
-            </div>
-        </div>
-    </div>
+                       <div class="message">
+                           <textarea name="message" id="message" placeholder="Message"></textarea>
+                       </div>
+                       <div class="boutonenvoyer">
+                           <input type="submit" value="Envoyer" class="envoyer" id="envoyer">
+                       </div>
+                   </form>
+               </div>
+       </div>
 </body>
 </html>

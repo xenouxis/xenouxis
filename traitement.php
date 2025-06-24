@@ -15,7 +15,7 @@ if(isset($_POST['nom']))
     {
         $err=2;
     }else{
-        $nom = htmlspecialchars($_POST['prenom']);
+        $prenom = htmlspecialchars($_POST['prenom']);
     }
 
     if(empty($_POST['email']))
@@ -25,12 +25,6 @@ if(isset($_POST['nom']))
         $email = htmlspecialchars($_POST['email']);
     }
 
-    if(empty($_POST['sujet']))
-    {
-        $err=4;
-    }else{
-        $sujet = htmlspecialchars($_POST['sujet']);
-    }
 
     if(empty($_POST['message']))
     {
@@ -44,12 +38,11 @@ if(isset($_POST['nom']))
     {
         // pas d'erreur -> insertion dans la base de données
         require "connexion.php";
-        $insert = $bdd->prepare("INSERT INTO contact(nom,prenom,email,sujet,message,date) VALUES(:nom,:prenom,:email,:sujet,:message,NOW())");
+        $insert = $bdd->prepare("INSERT INTO contact(nom,prenom,email,message,date) VALUES(:nom,:prenom,:email,:message,NOW())");
         $insert->execute([
             ":nom" => $nom,
             ":prenom" => $prenom,
             ":email" => $email,
-            ":sujet" => $sujet,
             ":message" => $message
         ]);
         $insert->closeCursor();

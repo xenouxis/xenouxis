@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 30 mai 2024 à 13:49
--- Version du serveur : 8.0.31
--- Version de PHP : 8.2.0
+-- Généré le : ven. 13 juin 2025 à 11:19
+-- Version du serveur : 9.1.0
+-- Version de PHP : 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `portfolio_lisa`
 --
-CREATE DATABASE IF NOT EXISTS `portfolio_lisa` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `portfolio_lisa`;
 
 -- --------------------------------------------------------
 
@@ -58,32 +56,16 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `date` datetime NOT NULL,
-  `sujet` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `flash`
---
-
-DROP TABLE IF EXISTS `flash`;
-CREATE TABLE IF NOT EXISTS `flash` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `fichier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `flash`
+-- Déchargement des données de la table `contact`
 --
 
-INSERT INTO `flash` (`id`, `nom`, `fichier`, `description`, `date`) VALUES
-(2, 'xdth', '1751114442647811769032b85c7e1819e2220eb470295c28629.jpg', 'yjuk', '2024-05-05');
+INSERT INTO `contact` (`id`, `nom`, `prenom`, `email`, `message`, `date`) VALUES
+(1, 'Sluys', 'Lisa', 'lisaliloua5@gmail.com', 'dvxc ', '2025-06-13 11:39:15'),
+(2, 'Sluys', 'Lisa', 'lisaliloua5@gmail.com', 'lol\r\n', '2025-06-13 13:09:27');
 
 -- --------------------------------------------------------
 
@@ -117,7 +99,7 @@ INSERT INTO `illustrator` (`id`, `nom`, `description`, `date`, `fichier`) VALUES
 DROP TABLE IF EXISTS `images`;
 CREATE TABLE IF NOT EXISTS `images` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `fichier` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `fichier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_produit` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -145,29 +127,6 @@ CREATE TABLE IF NOT EXISTS `infographie` (
 
 INSERT INTO `infographie` (`id`, `nom`, `description`, `date`, `fichier`, `video`) VALUES
 (1, 'oui', 'oui', '2024-04-18', '2061611061image1.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `peau`
---
-
-DROP TABLE IF EXISTS `peau`;
-CREATE TABLE IF NOT EXISTS `peau` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `fichier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `peau`
---
-
-INSERT INTO `peau` (`id`, `nom`, `fichier`, `description`, `date`) VALUES
-(1, 'esgd', '23920812nouveau-crash-bandicoot-game-awards.jpg', 'redhf', '2024-05-24');
 
 -- --------------------------------------------------------
 
@@ -202,7 +161,7 @@ INSERT INTO `photoshop` (`id`, `nom`, `description`, `date`, `fichier`) VALUES
 DROP TABLE IF EXISTS `skills`;
 CREATE TABLE IF NOT EXISTS `skills` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `fichier` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `fichier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

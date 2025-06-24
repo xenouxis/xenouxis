@@ -69,7 +69,6 @@
                 <th>Prénom</th>
                 <th>Email</th>
                 <th>Message</th>
-                <th>Sujet</th>
                 <th>Date</th>
                 <th>Action</th>
             </tr>
@@ -85,7 +84,6 @@
                         echo "<td>".$donContact['prenom']."</td>";
                         echo "<td>".$donContact['email']."</td>";
                         echo "<td>".$donContact['message']."</td>";
-                        echo "<td>".$donContact['sujet']."</td>";
                         echo "<td>".$donContact['mydate']."</td>";
                         echo "<td>";
                             echo "<a href='showContact.php?id=".$donContact['id']."' class='btn btn-success'>Afficher</a>";
