@@ -11,24 +11,27 @@
     <title>Portfolio</title>
 </head>
 <body>
-    <nav>
-        <div id="logo">logo</div>
-        <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#travaux">Travaux</a></li>
-            <li id="menucontact"><a href="#contact" id="contactnav">Contact</a></li>
-        </ul>
-    </nav>
+    <?php include 'navbar.php'; ?>
     <div id="accueil" class="slide">
         <div class="gauche">
-            <div class="rond"></div>
+            <div class="rond"> 
+                <img src="images/polaroid_moi.png" alt="polaroid" class="polaroid_moi"></a>
+            </div>
         </div>
         <div class="droite">
             <div class="rectangle"></div>
             <div class="groupebouton">
-                <a href="#contact"><div class="boutoncontact"></div></a>
-                <a href="#"><div class="boutoncv"></div></a>
-                
+                <a href="#contact"><div class="boutoncontact">Contact</div></a>
+                <a href="#"><div class="boutoncv">CV</div></a>
+            </div>
+            <div class="skills-icons">
+                <?php
+                $skillsReq = $bdd->query("SELECT * FROM skills");
+                while($skill = $skillsReq->fetch()) {
+                    echo '<img src="images/'.$skill['fichier'].'" alt="icone compétence" class="skill-icon">';
+                }
+                $skillsReq->closeCursor();
+                ?>
             </div>
         </div>
     </div>
@@ -79,4 +82,5 @@
                </div>
        </div>
 </body>
+<?php include 'footer.php'; ?>
 </html>

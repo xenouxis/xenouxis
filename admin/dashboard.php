@@ -30,7 +30,7 @@
         include("partials/header.php");
     ?>
     <div class="container-fluid">
-     
+     <h1>Admin de qualité</h1>
        
     </div>
     <?php include('partials/footer.php'); ?>
